@@ -13,6 +13,11 @@ describe BLM do
   		@blm.header[:eor].should_not be_nil
   	end
   	
+  	it "should parse the column definition" do
+  		@blm.definition.should be_a(Array)
+  		@blm.definition.should have_at_least(1).items
+  	end
+  	
   	it "should parse the data into an array of hashes" do
   		@blm.data.should be_a(Array)
   		@blm.data.should have_at_least(1).items
