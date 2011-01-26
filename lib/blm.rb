@@ -1,5 +1,5 @@
 module BLM
-	module Parser
+	class Document
 		def initialize(source)
 			@source = source
 		end
@@ -49,11 +49,9 @@ module BLM
 		end
 	end
 	
-	class Document
-		include Parser
-	end
-	
 	class Row
+		attr_accessor :attributes
+		
 		def initialize(hash)
 			@attributes = hash
 		end

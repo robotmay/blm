@@ -32,5 +32,11 @@ describe BLM do
   			row.address_1.should_not be_nil
   		end
   	end
+  	
+  	it "should allow access to the @attributes hash directly" do
+  		@blm.data.each do |row|
+  			row.attributes.should be_a(Hash)
+  		end
+  	end
   end
 end
