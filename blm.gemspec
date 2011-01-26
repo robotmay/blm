@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.textile",
     "Rakefile",
     "VERSION",
+    "blm.gemspec",
     "lib/blm.rb",
     "spec/blm/example_data.blm",
     "spec/blm_spec.rb",
