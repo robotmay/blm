@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe BLM do
   context "reading a .blm file" do
   	before :all do
-  		@blm = BLM::Parser.new( File.open(File.dirname(__FILE__) + "/blm/example_data.blm", "r").read )
+  		@blm = BLM::Document.new( File.open(File.dirname(__FILE__) + "/blm/example_data.blm", "r").read )
   	end
   	
   	it "should parse settings from the header" do

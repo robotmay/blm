@@ -1,5 +1,5 @@
 module BLM
-	class Parser
+	class Document
 		def initialize(source)
 			@source = source
 		end
