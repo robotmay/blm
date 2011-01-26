@@ -1,9 +1,9 @@
 module BLM
-	class Document
+	module Parser
 		def initialize(source)
 			@source = source
 		end
-	
+		
 		def header
 			return @header if defined?(@header)
 		
@@ -49,7 +49,11 @@ module BLM
 		end
 	end
 	
-	class Row	
+	class Document
+		include Parser
+	end
+	
+	class Row
 		def initialize(hash)
 			@attributes = hash
 		end
