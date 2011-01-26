@@ -7,13 +7,13 @@ h2. Usage
 Using the gem is very simple; just pass it a string of data:
 
 <pre>
-	@blm = BLM.new( File.open("example_data.blm", "r").read )
+@blm = BLM.new( File.open("example_data.blm", "r").read )
 </pre>
 
 You will then have access to @blm.header, @blm.definition, and @blm.data:
 
 <pre>
-	@blm.data.each do |row|
-		puts row.address_1
-	end
+@blm.data.each do |row|
+	puts row.address_1
+end
 </pre>
