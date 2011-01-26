@@ -17,7 +17,9 @@ describe BLM do
   		@blm.data.should be_a(Array)
   		@blm.data.should have_at_least(1).items
   		@blm.data.should respond_to(:each, :each_with_index)
-  		@blm.data.first.should be_a(Hash)
+  		@blm.data.each do |row|
+  			row.should be_a(Hash)
+  		end
   	end
   end
 end

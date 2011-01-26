@@ -5,14 +5,39 @@ class BLM
 	
 	def header
 		return @header if defined?(@header)
-		@header = {}
 		
+		@header = {}
 		get_contents(@source, "#HEADER#", "#").each_line do |line|
 			next if line.empty?
 			key, value = line.split(" : ")
-			@header[key.downcase.to_sym] = value.strip
+			@header[key.downcase.to_sym] = value.gsub(/'/, "").strip
 		end
 		return @header
+	end
+	
+	def definition
+		return @definition if defined?(@definition)
+		
+		@definition = []
+		get_contents(@source, "#DEFINITION#", "#").split(header[:eor]).first.split(header[:eof]).each do |field|
+			next if field.empty?
+			@definition << field.downcase.strip
+		end
+		return @definition
+	end
+	
+	def data
+		return @data if defined?(@data)
+		
+		@data = []
+		get_contents(@source, "#DATA#", "#").split(header[:eor]).each do |line|
+			entry = {}
+			line.split(header[:eof]).each_with_index do |field, index|
+				entry[definition[index].to_sym] = field.strip
+			end
+			@data << entry
+		end
+		return @data
 	end
 	
 	private
