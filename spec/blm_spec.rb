@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe BLM do
   context "reading a .blm file" do
   	before :all do
-  		@blm = BLM.new( File.open(File.dirname(__FILE__) + "/blm/example_data.blm", "r").read )
+  		@blm = BLM::Parser.new( File.open(File.dirname(__FILE__) + "/blm/example_data.blm", "r").read )
   	end
   	
   	it "should parse settings from the header" do
@@ -23,7 +23,13 @@ describe BLM do
   		@blm.data.should have_at_least(1).items
   		@blm.data.should respond_to(:each, :each_with_index)
   		@blm.data.each do |row|
-  			row.should be_a(Hash)
+  			row.should be_a(BLM::Row)
+  		end
+  	end
+  	
+  	it "should allow access to data values via methods" do
+  		@blm.data.each do |row|
+  			row.address_1.should_not be_nil
   		end
   	end
   end
