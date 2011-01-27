@@ -18,6 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Hurrah! Another pointless text format to parse.}
   gem.email = "robotmay@gmail.com"
   gem.authors = ["Robert May"]
+  gem.files.exclude "spec"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
